@@ -49,9 +49,11 @@ public abstract class Person implements java.io.Serializable {
 	}
 
 	public void setDOB(Date DOB) throws PersonException {
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, -100);
-		Date testDay = cal.getTime();
+//		Calendar cal = Calendar.getInstance();
+//		cal.add(Calendar.YEAR, -100);
+//		Date testDay = cal.getTime();
+		Date testDay = new Date();
+		testDay.setYear(testDay.getYear()-100);
 		if (DOB.before(testDay)) {
 			throw new PersonException(this, "Are you over 100 years old????");
 		} else {
