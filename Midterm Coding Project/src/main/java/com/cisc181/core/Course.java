@@ -9,6 +9,5 @@ public class Course {
 	String CourseName;
 	int GradePoints;
 	eMajor Major;
-	//
 
 }
