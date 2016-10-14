@@ -49,9 +49,6 @@ public abstract class Person implements java.io.Serializable {
 	}
 
 	public void setDOB(Date DOB) throws PersonException {
-//		Calendar cal = Calendar.getInstance();
-//		cal.add(Calendar.YEAR, -100);
-//		Date testDay = cal.getTime();
 		Date testDay = new Date();
 		testDay.setYear(testDay.getYear()-100);
 		if (DOB.before(testDay)) {
@@ -71,10 +68,11 @@ public abstract class Person implements java.io.Serializable {
 
 	public void setPhone(String newPhone_number) throws PersonException {
 		String regex = "^\\({1}([0-9]{3})\\){1}-{1}([0-9]{3})-{1}([0-9]{4})$";
-		if (Pattern.matches(regex, newPhone_number))
-			phone_number = newPhone_number;
-		else
+		if (Pattern.matches(regex, newPhone_number)) {
+			this.phone_number = newPhone_number;
+		} else {
 			throw new PersonException(this, "The phone number was wrong!");
+		}
 
 	}
 
@@ -97,26 +95,18 @@ public abstract class Person implements java.io.Serializable {
 
 	}
 
-	/*
+	/* 
 	 * Constructors Constructor with arguments
 	 */
 
 	public Person(String FirstName, String MiddleName, String LastName, Date DOB, String Address, String Phone_number,
-			String Email) {
+			String Email) throws PersonException {
 		this.FirstName = FirstName;
 		this.MiddleName = MiddleName;
 		this.LastName = LastName;
-		try {
-			this.setDOB(DOB);
-		} catch (PersonException e) {
-			e.printStackTrace();
-		}
+		this.setDOB(DOB);
 		this.address = Address;
-		try {
-			this.setPhone(Phone_number);
-		} catch (PersonException e) {
-			e.printStackTrace();
-		}
+		this.setPhone(Phone_number);
 		this.email_address = Email;
 
 	}
