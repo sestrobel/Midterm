@@ -1,5 +1,8 @@
 package com.cisc181.core;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,7 +16,15 @@ public class Student extends Person {
 
 	private eMajor Major; //
 	private UUID StudentID;
+	private ArrayList<Enrollment> enrollments;
+	private double GradePoint;
 	
+	public ArrayList<Enrollment> getEnrollments() {
+		return enrollments;
+	}
+	public void setEnrollments(ArrayList<Enrollment> enrollments) {
+		this.enrollments = enrollments;
+	}
 	public String getMajor ( )
     {
         return this.Major.toString(); //
@@ -44,5 +55,16 @@ public class Student extends Person {
 	public void PrintName(boolean bnormal)
 	{
 		super.PrintName();
+	}
+	
+	public double gradePointCalc() {
+		double sum = 0;
+		double num = 0;
+		for (Enrollment enr : enrollments) {
+			sum += enr.getGrade();
+			num += 1;
+		}
+		this.GradePoint = Math.round((sum/num) * 100.0) / 100.0;
+		return this.GradePoint;
 	}
 }
