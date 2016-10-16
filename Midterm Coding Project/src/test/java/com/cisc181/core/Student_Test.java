@@ -69,15 +69,8 @@ public class Student_Test {
 
 	}
 
-	/*
-
-	 * Change the major of one of the Student records.
-	 * 
-	 * 5 points.
-	 * 
-	 */
 	@Test
-	public void test() {
+	public void testEnrollandGPA() {
 		//Enrolls kids, sets grades, checks gpa
 		assertEquals(1, 1);
 		ArrayList<Enrollment> a = new ArrayList<Enrollment>();
@@ -242,9 +235,8 @@ public class Student_Test {
 		assertTrue(kidz.get(9).gradePointCalc() == 4.00);
 	}
 	
-	
 	@Test
-	public void test1() {
+	public void testCheckCourseAvg() {
 		//checks avg grade for course
 		double grades0 = 0;
 		double sum0 = 0;
@@ -290,7 +282,7 @@ public class Student_Test {
 	}
 	
 	@Test
-	public void test2() {
+	public void testMajorChange() {
 		//change majors of a kid
 		assertTrue(kidz.get(0).getMajor() == eMajor.COMPSI.toString());
 		kidz.get(0).setMajor(eMajor.BUSINESS);
