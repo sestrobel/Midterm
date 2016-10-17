@@ -9,4 +9,8 @@ public class PersonException extends Exception{
 			super(message);
 			this.Person = Person;
 		} 
+
+	public Person getPerson() {
+		return Person;
+	}
 }
